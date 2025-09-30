@@ -1,0 +1,179 @@
+.history-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-card,
+.actions-card,
+.history-card {
+  margin-bottom: 24px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.actions-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.actions-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667eea;
+}
+
+mat-card-subtitle {
+  color: #666;
+  margin-top: 8px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  text-align: center;
+}
+
+.loading-container p {
+  margin-top: 16px;
+  color: #666;
+  font-size: 16px;
+}
+
+.history-table-container {
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  min-width: 800px;
+}
+
+.history-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.history-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-value {
+  font-family: monospace;
+  font-weight: 500;
+  color: #333;
+}
+
+.organization-name {
+  font-weight: 500;
+  color: #667eea;
+}
+
+.ein {
+  font-family: monospace;
+  font-weight: 500;
+  color: #333;
+}
+
+.compliance-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.compliance-status.compliant {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+}
+
+.compliance-status.non-compliant {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.user {
+  font-size: 14px;
+  color: #666;
+}
+
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  text-align: center;
+  color: #666;
+}
+
+.no-data mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  color: #ccc;
+}
+
+.no-data p {
+  font-size: 16px;
+  margin: 0;
+}
+
+mat-paginator {
+  margin-top: 16px;
+}
+
+::ng-deep .mat-paginator {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+mat-chip {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+

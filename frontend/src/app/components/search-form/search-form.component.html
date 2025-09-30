@@ -1,0 +1,85 @@
+<div class="search-container">
+  <mat-card class="search-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>search</mat-icon>
+        Search Nonprofit Organization
+      </mat-card-title>
+      <mat-card-subtitle>Enter an EIN or organization name to check compliance status</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
+        <div class="search-type-section">
+          <mat-form-field appearance="outline" class="search-type-field">
+            <mat-label>Search Type</mat-label>
+            <mat-select formControlName="searchType">
+              <mat-option value="ein">EIN (Employer Identification Number)</mat-option>
+              <mat-option value="organization">Organization Name</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="search-value-section">
+          <mat-form-field appearance="outline" class="search-value-field">
+            <mat-label>{{ searchForm.get('searchType')?.value === 'ein' ? 'EIN' : 'Organization Name' }}</mat-label>
+            <input 
+              matInput 
+              formControlName="searchValue" 
+              [placeholder]="searchForm.get('searchType')?.value === 'ein' ? 'XX-XXXXXXX' : 'Enter organization name'"
+            >
+            <mat-icon matSuffix>
+              {{ searchForm.get('searchType')?.value === 'ein' ? 'badge' : 'business' }}
+            </mat-icon>
+            <mat-error>{{ getErrorMessage('searchValue') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions">
+          <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit" 
+            [disabled]="isLoading || searchForm.invalid"
+            class="search-button"
+          >
+            <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+            <mat-icon *ngIf="!isLoading">search</mat-icon>
+            <span>{{ isLoading ? 'Searching...' : 'Search' }}</span>
+          </button>
+
+          <button 
+            mat-button 
+            type="button" 
+            (click)="clearResults()"
+            [disabled]="isLoading"
+            class="clear-button"
+          >
+            <mat-icon>clear</mat-icon>
+            Clear
+          </button>
+        </div>
+      </form>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner></mat-spinner>
+        <p>Searching nonprofit information...</p>
+      </div>
+
+      <!-- Error State -->
+      <div *ngIf="searchError" class="error-message">
+        <mat-icon>error</mat-icon>
+        <p>{{ searchError }}</p>
+      </div>
+
+      <!-- Results -->
+      <app-results 
+        *ngIf="searchResults" 
+        [searchResults]="searchResults"
+      ></app-results>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

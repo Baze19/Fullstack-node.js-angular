@@ -1,0 +1,49 @@
+.dashboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-toolbar {
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dashboard-toolbar span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 16px;
+  font-size: 14px;
+}
+
+.dashboard-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+::ng-deep .mat-tab-group {
+  height: 100%;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  height: calc(100% - 48px);
+}
+
+::ng-deep .mat-tab-body-content {
+  height: 100%;
+  overflow: auto;
+}
+
+

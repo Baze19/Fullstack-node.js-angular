@@ -1,0 +1,174 @@
+<div class="results-container">
+  <mat-card class="results-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>business</mat-icon>
+        Search Results
+      </mat-card-title>
+      <mat-card-subtitle>
+        Retrieved on {{ formatDate(searchResults.timestamp) }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Organization Information -->
+      <div class="organization-section">
+        <h3>
+          <mat-icon>account_balance</mat-icon>
+          Organization Information
+        </h3>
+        
+        <div class="organization-info">
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Organization Name:</label>
+              <span class="organization-name">{{ searchResults.data.organization.name }}</span>
+            </div>
+            
+            <div class="info-item">
+              <label>EIN:</label>
+              <span class="ein">{{ searchResults.data.organization.ein }}</span>
+            </div>
+            
+            <div class="info-item">
+              <label>Status:</label>
+              <span class="status">{{ searchResults.data.organization.status }}</span>
+            </div>
+            
+            <div class="info-item">
+              <label>Tax Exempt Status:</label>
+              <span class="tax-status">{{ searchResults.data.organization.taxExemptStatus }}</span>
+            </div>
+            
+            <div class="info-item">
+              <label>Founded Year:</label>
+              <span>{{ searchResults.data.organization.foundedYear }}</span>
+            </div>
+            
+            <div class="info-item">
+              <label>Mission:</label>
+              <span class="mission">{{ searchResults.data.organization.mission }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Information -->
+      <div class="address-section">
+        <h3>
+          <mat-icon>location_on</mat-icon>
+          Address Information
+        </h3>
+        
+        <div class="address-info">
+          <p>{{ searchResults.data.organization.address }}</p>
+          <p>{{ searchResults.data.organization.city }}, {{ searchResults.data.organization.state }} {{ searchResults.data.organization.zipCode }}</p>
+          <p>{{ searchResults.data.organization.country }}</p>
+          <p *ngIf="searchResults.data.organization.phone">
+            <mat-icon>phone</mat-icon>
+            {{ searchResults.data.organization.phone }}
+          </p>
+          <p *ngIf="searchResults.data.organization.website">
+            <mat-icon>language</mat-icon>
+            <a [href]="searchResults.data.organization.website" target="_blank">
+              {{ searchResults.data.organization.website }}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Compliance Status -->
+      <div class="compliance-section">
+        <h3>
+          <mat-icon>verified</mat-icon>
+          Compliance Status
+        </h3>
+        
+        <div class="compliance-grid">
+          <div class="compliance-item main-status">
+            <label>Overall Compliance:</label>
+            <span class="compliance-status" 
+                  [ngClass]="getComplianceStatusClass(searchResults.data.compliance.isCompliant)">
+              {{ getComplianceStatusText(searchResults.data.compliance.isCompliant) }}
+            </span>
+          </div>
+          
+          <div class="compliance-item">
+            <label>BMF Status:</label>
+            <span class="status-badge" 
+                  [ngClass]="getBmfStatusClass(searchResults.data.compliance.bmfCompliant)">
+              {{ getBmfStatusText(searchResults.data.compliance.bmfCompliant) }}
+            </span>
+          </div>
+          
+          <div class="compliance-item">
+            <label>PUB78 Status:</label>
+            <span class="status-badge" 
+                  [ngClass]="getPub78StatusClass(searchResults.data.compliance.pub78Compliant)">
+              {{ getPub78StatusText(searchResults.data.compliance.pub78Compliant) }}
+            </span>
+          </div>
+          
+          <div class="compliance-item">
+            <label>Last Verified:</label>
+            <span>{{ formatDate(searchResults.data.compliance.lastVerified) }}</span>
+          </div>
+        </div>
+
+        <!-- Flags and Warnings -->
+        <div *ngIf="searchResults.data.compliance.flags.length > 0" class="flags-section">
+          <h4>Compliance Flags:</h4>
+          <div class="flags-list">
+            <mat-chip *ngFor="let flag of searchResults.data.compliance.flags" color="warn">
+              {{ flag }}
+            </mat-chip>
+          </div>
+        </div>
+
+        <div *ngIf="searchResults.data.compliance.warnings.length > 0" class="warnings-section">
+          <h4>Warnings:</h4>
+          <div class="warnings-list">
+            <mat-chip *ngFor="let warning of searchResults.data.compliance.warnings" color="accent">
+              {{ warning }}
+            </mat-chip>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source Matches -->
+      <div class="source-matches-section">
+        <h3>
+          <mat-icon>source</mat-icon>
+          Source Matches
+        </h3>
+        
+        <div class="source-matches-grid">
+          <div class="source-item">
+            <label>BMF Match:</label>
+            <span class="match-status" 
+                  [ngClass]="searchResults.data.sourceMatches.bmfMatch ? 'match' : 'no-match'">
+              {{ searchResults.data.sourceMatches.bmfMatch ? 'Yes' : 'No' }}
+            </span>
+          </div>
+          
+          <div class="source-item">
+            <label>PUB78 Match:</label>
+            <span class="match-status" 
+                  [ngClass]="searchResults.data.sourceMatches.pub78Match ? 'match' : 'no-match'">
+              {{ searchResults.data.sourceMatches.pub78Match ? 'Yes' : 'No' }}
+            </span>
+          </div>
+          
+          <div class="source-item">
+            <label>Confidence Level:</label>
+            <span class="confidence-level">
+              {{ formatConfidence(searchResults.data.sourceMatches.confidence) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

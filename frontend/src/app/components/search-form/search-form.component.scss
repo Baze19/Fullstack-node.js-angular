@@ -1,0 +1,111 @@
+.search-container {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search-type-section {
+  display: flex;
+  justify-content: center;
+}
+
+.search-type-field {
+  width: 300px;
+}
+
+.search-value-section {
+  display: flex;
+  justify-content: center;
+}
+
+.search-value-field {
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.search-button {
+  min-width: 120px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.clear-button {
+  min-width: 100px;
+  height: 48px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  text-align: center;
+}
+
+.loading-container p {
+  margin-top: 16px;
+  color: #666;
+  font-size: 16px;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  color: #c62828;
+  margin: 16px 0;
+}
+
+.error-message mat-icon {
+  color: #f44336;
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667eea;
+}
+
+mat-card-subtitle {
+  color: #666;
+  margin-top: 8px;
+}
+
+.search-button mat-spinner {
+  margin-right: 8px;
+}
+
+.search-button mat-icon {
+  margin-right: 8px;
+}
+
+.clear-button mat-icon {
+  margin-right: 8px;
+}
+
+
